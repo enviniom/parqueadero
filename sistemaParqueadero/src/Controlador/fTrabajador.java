@@ -28,12 +28,12 @@ public class fTrabajador {
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
         String[] titulos = {"ID", "Nombre", "1er Apellido", "2do Apellido", "Tipo ID", "Numero ID",
-            "Dirección", "Teléfono", "Celular", "Email", "Sueldo", "Acceso", "Login", "Password", "Estado", "Contrato"};
+            "Dirección", "Teléfono", "Celular", "Email", "Sueldo", "Acceso", "Login", "Clave", "Estado"};
         String[] registro = new String[16];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
         sSQL = "select p.idpersona,p.nombre,p.apellidop,p.apellidom,p.tipo_id,p.num_id,p.direccion,p.telefono,p.celular,p.email"
-                + "t.sueldo,t.acceso,t.login,t.password,t.estado,t.contrato from persona p inner join trabajador t "
+                + "t.sueldo,t.acceso,t.login,t.password,t.estado from persona p inner join trabajador t "
                 + "on p.idpersona=t.trabajador where num_id like '%" + buscar + "%' order by num_id desc";
 
         try {
@@ -56,7 +56,6 @@ public class fTrabajador {
                 registro[12] = rs.getString("login");
                 registro[13] = rs.getString("password");
                 registro[14] = rs.getString("estado");
-                registro[15] = rs.getString("contrato");
 
                 totalRegistros++;
                 modelo.addRow(registro);
