@@ -32,9 +32,9 @@ public class fTrabajador {
         String[] registro = new String[16];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
-        sSQL = "select p.idpersona,p.nombre,p.apellidop,p.apellidom,p.tipo_id,p.num_id,p.direccion,p.telefono,p.celular,p.email"
+        sSQL = "select p.idpersona,p.nombre,p.apellidop,p.apellidom,p.tipo_id,p.num_id,p.direccion,p.telefono,p.celular,p.email,"
                 + "t.sueldo,t.acceso,t.login,t.password,t.estado from persona p inner join trabajador t "
-                + "on p.idpersona=t.trabajador where num_id like '%" + buscar + "%' order by num_id desc";
+                + "on p.idpersona=t.idpersona where num_id like '%" + buscar + "%' order by num_id desc";
 
         try {
             Statement st = cn.createStatement();

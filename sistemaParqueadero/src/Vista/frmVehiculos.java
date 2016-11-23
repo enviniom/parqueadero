@@ -6,6 +6,9 @@
 package Vista;
 
 import Controlador.fVehiculo;
+import java.awt.event.KeyEvent;
+import javax.swing.InputMap;
+import javax.swing.KeyStroke;
 import Modelo.vVehiculo;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableColumnModel;
@@ -220,6 +223,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnNuevo.setForeground(new java.awt.Color(15, 171, 223));
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/nuevo_doc.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnNuevoFocusGained(evt);
+            }
+        });
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -231,6 +239,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnGuardar.setForeground(new java.awt.Color(15, 171, 223));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/guardar_doc.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnGuardarFocusGained(evt);
+            }
+        });
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -242,6 +255,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnCancelar.setForeground(new java.awt.Color(15, 171, 223));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/cancelar_doc.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnCancelarFocusGained(evt);
+            }
+        });
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -337,6 +355,12 @@ public class frmVehiculos extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel10.setText("Buscar");
 
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+
         tablaListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -360,6 +384,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(15, 171, 223));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/buscar_doc.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnBuscarFocusGained(evt);
+            }
+        });
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -371,6 +400,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnEliminar.setForeground(new java.awt.Color(15, 171, 223));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/eliminar_doc.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnEliminarFocusGained(evt);
+            }
+        });
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -382,6 +416,11 @@ public class frmVehiculos extends javax.swing.JFrame {
         btnSalir.setForeground(new java.awt.Color(15, 171, 223));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Archivos/salir_inicio.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnSalirFocusGained(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -464,6 +503,7 @@ public class frmVehiculos extends javax.swing.JFrame {
         habilitar();
         btnGuardar.setText("Guardar");
         accion = "guardar";
+        cmbTipo.requestFocus();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -582,12 +622,12 @@ public class frmVehiculos extends javax.swing.JFrame {
 
     private void txtPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPropietarioActionPerformed
         // TODO add your handling code here:
-        txtPropietario.transferFocus();
+        btnGuardar.requestFocus();
     }//GEN-LAST:event_txtPropietarioActionPerformed
 
     private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
         // TODO add your handling code here:
-        cmbEstado.transferFocus();
+        btnGuardar.requestFocus();
     }//GEN-LAST:event_cmbEstadoActionPerformed
 
     private void tablaListadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaListadoMouseClicked
@@ -607,6 +647,7 @@ public class frmVehiculos extends javax.swing.JFrame {
         txtColor.setText(tablaListado.getValueAt(fila, 6).toString());
         txtPropietario.setText(tablaListado.getValueAt(fila, 7).toString());
         cmbEstado.setSelectedItem(tablaListado.getValueAt(fila, 8).toString());
+        txtPlaca.requestFocus();
         
     }//GEN-LAST:event_tablaListadoMouseClicked
 
@@ -619,6 +660,59 @@ public class frmVehiculos extends javax.swing.JFrame {
         // TODO add your handling code here:
         inhabilitar();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnGuardarFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnGuardar.setInputMap(0, map);
+    }//GEN-LAST:event_btnGuardarFocusGained
+
+    private void btnNuevoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnNuevoFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnNuevo.setInputMap(0, map);
+    }//GEN-LAST:event_btnNuevoFocusGained
+
+    private void btnCancelarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnCancelarFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnCancelar.setInputMap(0, map);
+    }//GEN-LAST:event_btnCancelarFocusGained
+
+    private void btnBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnBuscarFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnBuscar.setInputMap(0, map);
+    }//GEN-LAST:event_btnBuscarFocusGained
+
+    private void btnEliminarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnEliminarFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnEliminar.setInputMap(0, map);
+    }//GEN-LAST:event_btnEliminarFocusGained
+
+    private void btnSalirFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnSalirFocusGained
+        // TODO add your handling code here:
+        InputMap map = new InputMap();
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, false), "pressed");
+        map.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "released");
+        btnSalir.setInputMap(0, map);
+    }//GEN-LAST:event_btnSalirFocusGained
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+        mostrar(txtBuscar.getText());
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,7 +743,7 @@ public class frmVehiculos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+           public void run() {
                 new frmVehiculos().setVisible(true);
             }
         });
