@@ -739,7 +739,7 @@ public class frmTrabajador extends javax.swing.JFrame {
             dts.setIdPersona(Integer.parseInt(txtIdTrabajador.getText()));
             
             if (func.editar(dts)) {
-                JOptionPane.showMessageDialog(rootPane, "El vehículo fué editado satisfactoriamente");
+                JOptionPane.showMessageDialog(rootPane, "El Trabajador fué editado satisfactoriamente");
                 mostrar("");
                 inhabilitar();
             }

@@ -27,9 +27,9 @@ public class fTrabajador {
 
     public DefaultTableModel mostrar(String buscar) {
         DefaultTableModel modelo;
-        String[] titulos = {"ID", "Nombre", "1er Apellido", "2do Apellido", "Tipo ID", "Numero ID",
+        String[] titulos = {"ID", "Nombre", "1er Apellido", "2do Apellido", "Tipo", "Documento",
             "Dirección", "Teléfono", "Celular", "Email", "Sueldo", "Acceso", "Login", "Clave", "Estado"};
-        String[] registro = new String[16];
+        String[] registro = new String[15];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
         sSQL = "select p.idpersona,p.nombre,p.apellidop,p.apellidom,p.tipo_id,p.num_id,p.direccion,p.telefono,p.celular,p.email,"
@@ -71,11 +71,12 @@ public class fTrabajador {
     public boolean insertar(vTrabajador dts) {
         sSQL = "insert into persona (nombre,apellidop,apellidom,tipo_id,num_id,direccion,telefono,celular,email)"
                 + " values (?,?,?,?,?,?,?,?,?)";
-        sSQL2 = "insert into trabajador (idpersona,sueldo,acceso,login,password,estado,contrato)"
-                + " values ((select idpersona from persona order by idpersona desc limit 1),?,?,?,?,?,?)";
+        sSQL2 = "insert into trabajador (idpersona,sueldo,acceso,login,password,estado)"
+                + " values ((select idpersona from persona order by idpersona desc limit 1),?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
             PreparedStatement pst2 = cn.prepareStatement(sSQL2);
+            
             pst.setString(1, dts.getNombre());
             pst.setString(2, dts.getApellidop());
             pst.setString(3, dts.getApellidom());
@@ -91,7 +92,6 @@ public class fTrabajador {
             pst2.setString(3, dts.getLogin());
             pst2.setString(4, dts.getPassword());
             pst2.setString(5, dts.getEstado());
-            pst2.setString(6, dts.getContrato());
 
             int n = pst.executeUpdate();
 
@@ -115,7 +115,7 @@ public class fTrabajador {
     public boolean editar(vTrabajador dts) {
         sSQL = "update persona set nombre=?,apellidop=?,apellidom=?,tipo_id=?,num_id=?,direccion=?,telefono=?,celular=?,email=?"
                 + " where idpersona=?";
-        sSQL2 = "update trabajador set sueldo=?,acceso=?,login=?,password=?,estado=?,contrato=?"
+        sSQL2 = "update trabajador set sueldo=?,acceso=?,login=?,password=?,estado=?"
                 + " where idpersona=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
@@ -136,8 +136,7 @@ public class fTrabajador {
             pst2.setString(3, dts.getLogin());
             pst2.setString(4, dts.getPassword());
             pst2.setString(5, dts.getEstado());
-            pst2.setString(6, dts.getContrato());
-            pst.setInt(7, dts.getIdPersona());
+            pst.setInt(6, dts.getIdPersona());
 
             int n = pst.executeUpdate();
 
