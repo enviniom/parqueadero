@@ -754,7 +754,7 @@ public class frmTrabajador extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         if (!txtIdTrabajador.getText().equals("")) {
-            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro de eliminar el trabajdor?","confirmar",2);
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Esta seguro de eliminar el trabajador?","confirmar",2);
             if (confirmacion == 0) {
                 fVehiculo func = new fVehiculo();
                 vVehiculo dts = new vVehiculo();
