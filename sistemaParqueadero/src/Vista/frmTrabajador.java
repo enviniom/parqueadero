@@ -667,8 +667,13 @@ public class frmTrabajador extends javax.swing.JFrame {
             txtApellidop.requestFocus();
             return;
         }
-        if(txtNumeroID.getText().length() == 0){
+        if(txtApellidom.getText().length() == 0){
             JOptionPane.showMessageDialog(rootPane, "Debes ingresar el 2do apellido del Trabajador");
+            txtApellidom.requestFocus();
+            return;
+        }
+        if(txtNumeroID.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Debes ingresar el número de documento del Trabajador");
             txtNumeroID.requestFocus();
             return;
         }
@@ -815,14 +820,20 @@ public class frmTrabajador extends javax.swing.JFrame {
         
         int fila = tablaListado.rowAtPoint(evt.getPoint());
         txtIdTrabajador.setText(tablaListado.getValueAt(fila, 0).toString());
-        cmbTipoID.setSelectedItem(tablaListado.getValueAt(fila, 1).toString());
-        txtNombre.setText(tablaListado.getValueAt(fila, 2).toString());
-        txtApellidop.setText(tablaListado.getValueAt(fila, 3).toString());
-        txtNumeroID.setText(tablaListado.getValueAt(fila, 4).toString());
-        txtDireccion.setText(tablaListado.getValueAt(fila, 5).toString());
-        txtTelefono.setText(tablaListado.getValueAt(fila, 6).toString());
-        txtCelular.setText(tablaListado.getValueAt(fila, 7).toString());
-        cmbAcceso.setSelectedItem(tablaListado.getValueAt(fila, 8).toString());
+        txtNombre.setText(tablaListado.getValueAt(fila, 1).toString());
+        txtApellidop.setText(tablaListado.getValueAt(fila, 2).toString());
+        txtApellidom.setText(tablaListado.getValueAt(fila, 3).toString());
+        cmbTipoID.setSelectedItem(tablaListado.getValueAt(fila, 4).toString());
+        txtNumeroID.setText(tablaListado.getValueAt(fila, 5).toString());
+        txtDireccion.setText(tablaListado.getValueAt(fila, 6).toString());
+        txtTelefono.setText(tablaListado.getValueAt(fila, 7).toString());
+        txtCelular.setText(tablaListado.getValueAt(fila, 8).toString());
+        txtEmail.setText(tablaListado.getValueAt(fila, 9).toString());
+        txtSueldo.setText(tablaListado.getValueAt(fila, 10).toString());
+        cmbAcceso.setSelectedItem(tablaListado.getValueAt(fila, 11).toString());
+        txtLogin.setText(tablaListado.getValueAt(fila, 12).toString());
+        txtPassword.setText(tablaListado.getValueAt(fila, 13).toString());
+        cmbEstado.setSelectedItem(tablaListado.getValueAt(fila, 14).toString());
         
     }//GEN-LAST:event_tablaListadoMouseClicked
 
