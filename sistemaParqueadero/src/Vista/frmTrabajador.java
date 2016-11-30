@@ -20,14 +20,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jhon
  */
-public class frmTrabajador extends javax.swing.JFrame {
+public class frmTrabajador extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmVehiculos
      */
     public frmTrabajador() {
         initComponents();
-        this.setLocationRelativeTo(null);
         mostrar("");
         inhabilitar();
     }
@@ -171,7 +170,11 @@ public class frmTrabajador extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         lblTotalRegistros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setText("TRABAJADORES");
@@ -724,7 +727,7 @@ public class frmTrabajador extends javax.swing.JFrame {
         dts.setNumeroID(txtNumeroID.getText());
         dts.setDireccion(txtDireccion.getText());
         dts.setTelefono(Integer.parseInt(txtTelefono.getText()));
-        dts.setCelular(Integer.parseInt(txtCelular.getText()));
+        dts.setCelular(txtCelular.getText());
         dts.setEmail(txtEmail.getText());
         dts.setSueldo(Double.parseDouble(txtSueldo.getText()));
         seleccionado =(String) cmbAcceso.getSelectedItem();

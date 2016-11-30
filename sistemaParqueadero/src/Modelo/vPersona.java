@@ -10,13 +10,13 @@ package Modelo;
  * @author Jhon
  */
 public class vPersona {
-    private int idPersona, telefono, celular;
-    private String nombre, apellidop, apellidom, tipoID, numeroID, direccion, email;
+    private int idPersona, telefono;
+    private String nombre, apellidop, apellidom, tipoID, celular, numeroID, direccion, email;
 
     public vPersona() {
     }
 
-    public vPersona(int idPersona, int telefono, int celular, String nombre, String apellidop, String apellidom, String tipoID, String numeroID, String direccion, String email) {
+    public vPersona(int idPersona, int telefono, String celular, String nombre, String apellidop, String apellidom, String tipoID, String numeroID, String direccion, String email) {
         this.idPersona = idPersona;
         this.telefono = telefono;
         this.celular = celular;
@@ -45,11 +45,11 @@ public class vPersona {
         this.telefono = telefono;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

@@ -84,7 +84,7 @@ public class fTrabajador {
             pst.setString(5, dts.getNumeroID());
             pst.setString(6, dts.getDireccion());
             pst.setInt(7, dts.getTelefono());
-            pst.setInt(8, dts.getCelular());
+            pst.setString(8, dts.getCelular());
             pst.setString(9, dts.getEmail());
 
             pst2.setDouble(1, dts.getSueldo());
@@ -127,7 +127,7 @@ public class fTrabajador {
             pst.setString(5, dts.getNumeroID());
             pst.setString(6, dts.getDireccion());
             pst.setInt(7, dts.getTelefono());
-            pst.setInt(8, dts.getCelular());
+            pst.setString(8, dts.getCelular());
             pst.setString(9, dts.getEmail());
             pst.setInt(10, dts.getIdPersona());
 
@@ -136,7 +136,7 @@ public class fTrabajador {
             pst2.setString(3, dts.getLogin());
             pst2.setString(4, dts.getPassword());
             pst2.setString(5, dts.getEstado());
-            pst.setInt(6, dts.getIdPersona());
+            pst2.setInt(6, dts.getIdPersona());
 
             int n = pst.executeUpdate();
 
@@ -185,6 +185,41 @@ public class fTrabajador {
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, e);
             return false;
+        }
+    }
+    public DefaultTableModel login(String login, String pass) {
+        DefaultTableModel modelo;
+        String[] titulos = {"ID", "Nombre", "1er Apellido", "2do Apellido", "Acceso", "Login", "Clave", "Estado"};
+        String[] registro = new String[8];
+        totalRegistros = 0;
+        modelo = new DefaultTableModel(null, titulos);
+        sSQL = "select p.idpersona,p.nombre,p.apellidop,p.apellidom,"
+                + "t.acceso,t.login,t.password,t.estado from persona p inner join trabajador t "
+                + "on p.idpersona=t.idpersona where t.login='" + login + "' and t.password='" +pass+"'and"
+                + " t.estado='Habilitado'";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("idpersona");
+                registro[1] = rs.getString("nombre");
+                registro[2] = rs.getString("apellidop");
+                registro[3] = rs.getString("apellidom");
+                registro[4] = rs.getString("acceso");
+                registro[5] = rs.getString("login");
+                registro[6] = rs.getString("password");
+                registro[7] = rs.getString("estado");
+
+                totalRegistros++;
+                modelo.addRow(registro);
+            }
+
+            return modelo;
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
         }
     }
 
