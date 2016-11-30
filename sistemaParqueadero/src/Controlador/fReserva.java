@@ -32,7 +32,12 @@ public class fReserva {
         String[] registro = new String[20];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
-        sSQL = "select * from reserva where placa like '%" + buscar + "%' order by placa";
+        sSQL = "select idvehiculo from vehiculo where placa like '%" + buscar + "%' order by placa";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+        } catch (Exception e) {
+        }
         sSQL = "select r.idreserva,p.nombre,p.apellidop,p.apellidom,p.tipo_id,p.num_id,p.direccion,p.telefono,p.celular,p.email,"
                 + "t.sueldo,t.acceso,t.login,t.password,t.estado from persona p inner join trabajador t "
                 + "on p.idpersona=t.idpersona where num_id like '%" + buscar + "%' order by num_id desc";
